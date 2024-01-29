@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap');
+/* ESTILOS GENERALES */
+body{
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* HEADER */
+
+.header {
+    background-color: #1f1f1f; /* Fondo más oscuro para la barra de navegación */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.header img {
+    max-width: 50px; /* Tamaño máximo de la imagen del logo */
+}
+
+.header span {
+    font-size: 1.5em; /* Tamaño del texto del nombre del equipo */
+    margin: 0 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.header a {
+    color: #ffffff; /* Color del texto para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s; /* Transición suave de color al pasar el ratón sobre enlaces */
+}
+
+.header a:hover {
+    color: #ffd700; /* Cambia el color al pasar el ratón sobre enlaces */
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #1f1f1f; /* Fondo oscuro para el pie de página */
+    color: #ffffff; /* Texto claro para mayor legibilidad */
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: auto;
+}
+
+footer span {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+footer section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+footer a {
+    color: #ffffff; /* Color del texto para los enlaces */
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s; /* Transición suave de color al pasar el ratón sobre enlaces */
+}
+
+footer a:hover {
+    color: #ffd700; /* Cambia el color al pasar el ratón sobre enlaces */
+}
+
+/* CONTAINER INDEX */
+
+.container {
+    text-align: center; /* Centra el texto en el contenedor */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px; /* Ancho máximo del contenedor */
+}
+
+.container p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.container img {
+    max-width: 80%; /* Imagen ajustada al 100% del ancho del contenedor */
+    height: auto;
+}
+
+/* DONDE ESTAMOS */
+.donde{
+    list-style: none;
+}
+/* CONTACTO */
+/* Estilos generales del formulario */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para etiquetas de los campos */
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: black;
+}
+
+/* Estilos para los campos de entrada y el área de texto */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Estilos para el botón de enviar */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
