@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::get('/donde-estamos', function () {
 Route::get('/contacto', function () {
     return view('contacto');
 })->name('contacto');
+
+Route::resource('events', EventController::class);
 
 
 
