@@ -4,14 +4,21 @@
 <div class="events">
     @foreach ($events as $event)
     <div class="event">
-        <h2>{{ $event->name }}</h2>
+       @guest
+            <h2>{{ $event->name }}</h2>
+        @else
+            <h2><a href="{{ route('events.show', $event)}}">{{ $event->name }}</a></h2>
+       @endguest
+
         <span>{{ $event->description }}</span><br>
-        <span>Localización: {{ $event->location }}</span>
-        <span>Fecha: {{ $event->date }}</span>
-        <span>Tipo: {{ $event->type }}</span>
-        @auth('role' == 'admin')
-            <a href="">Modificar</a>
-            <a href="">Eliminar</a>
+
+        @auth
+            @if (Auth::user()->rol == 'admin')
+                <a href="">Modificar</a>
+                <a href="">Eliminar</a>
+                @else
+                <a href="">Me gusta</a>
+            @endif
         @endauth
     </div>
     <hr>
