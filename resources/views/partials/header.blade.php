@@ -7,4 +7,19 @@
     <a href="">Tienda</a>
     <a href="{{ route('contacto')}}">Contacto</a>
     <a href="{{ route('donde-estamos')}}">¿Donde estamos?</a>
+    @auth
+        <a href="">Cuenta</a>
+        <a href="{{ route('logout')}}">Logout</a>
+    @else
+        <a href="{{ route('signup')}}">Registrate</a>
+        <a href="{{ route('login')}}">Login</a>
+    @endauth
+
+    @auth
+        @if ( Auth::user()->rol == 'admin')
+            <a href="">Añadir jugador</a>
+            <a href="">Añadir evento</a>
+            <a href="">Mensajes</a>
+        @endif
+    @endauth
 </nav>

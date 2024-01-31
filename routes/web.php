@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\EventController;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -34,6 +37,12 @@ Route::get('/contacto', function () {
 })->name('contacto');
 
 Route::resource('events', EventController::class);
+
+Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');
+Route::post('signup', [LoginController::class, 'signup'])->name('signup');
+Route::get('login', [LoginController::class, 'loginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
