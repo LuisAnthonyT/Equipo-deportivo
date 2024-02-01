@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -21,15 +22,27 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view ('events.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $event = new Event();
+        $event->name = $request->get('name');
+        $event->description = $request->get('description');
+        $event->location = $request->get('location');
+        $event->date = $request->get('date');
+        $event->hour = $request->get('hour');
+        $event->type = $request->get('type');
+        $event->tags = $request->get('tags');
+        $event->tags = $request->get('tags');
+        $event->visible = $request->has('visible') ? 1 : 0;
+        $event->save();
+
+        return redirect()->route('events.index');
     }
 
     /**
@@ -45,15 +58,25 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $event->name = $request->input('name');
+        $event->description = $request->input('description');
+        $event->location = $request->input('location');
+        $event->date = $request->input('date');
+        $event->hour = $request->input('hour');
+        $event->type = $request->input('type');
+        $event->tags = $request->input('tags');
+        $event->visible = $request->has('visible') ? 1 : 0;
+        $event->save();
+
+        return redirect()->route('events.show', $event);
     }
 
     /**
@@ -61,6 +84,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        Event::findOrFail($event->id)->delete();
+        return redirect()->route('events.index');
     }
 }

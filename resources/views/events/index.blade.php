@@ -14,8 +14,12 @@
 
         @auth
             @if (Auth::user()->rol == 'admin')
-                <a href="">Modificar</a>
-                <a href="">Eliminar</a>
+                <a href="{{ route('events.edit', $event)}}">Modificar</a>
+                <form action="{{ route('events.destroy', $event)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="Eliminar">
+                </form>
                 @else
                 <a href="">Me gusta</a>
             @endif
