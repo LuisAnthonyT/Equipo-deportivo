@@ -1,5 +1,6 @@
 {{-- VISIBLE PARA TODOS LOS ROLES --}}
 @extends('layout')
+@section('title', 'Eventos')
 @section('content')
 <div class="events">
     @foreach ($events as $event)

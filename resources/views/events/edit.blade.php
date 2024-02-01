@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Event edit')
+@section('title', 'Editar evento')
 @section('content')
     <form action="{{ route('events.update', $event) }}" method="post">
         @csrf

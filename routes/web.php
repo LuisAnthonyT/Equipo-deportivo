@@ -7,6 +7,8 @@ use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+
 
 
 /*
@@ -37,6 +39,8 @@ Route::get('/contacto', function () {
 })->name('contacto');
 
 Route::resource('events', EventController::class);
+Route::resource('user', UserController::class);
+
 
 Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');
 Route::post('signup', [LoginController::class, 'signup'])->name('signup');

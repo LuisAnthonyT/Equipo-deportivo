@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Evento')
 @section('content')
     <div class="event">
         <h2>{{ $event->name }}</h2>
