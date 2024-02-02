@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MessageController;
+
 
 
 
@@ -38,12 +40,9 @@ Route::get('/donde-estamos', function () {
     return view('donde-estamos');
 })->name('donde-estamos');
 
-Route::get('/contacto', function () {
-    return view('contacto');
-})->name('contacto');
-
 Route::resource('events', EventController::class);
 Route::resource('user', UserController::class);
+Route::resource('messages', MessageController::class);
 
 
 Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');

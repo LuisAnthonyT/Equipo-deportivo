@@ -5,14 +5,14 @@
     <a href="">Jugadores</a>
     <a href="{{ route('events.index')}}">Eventos</a>
     <a href="{{ route('products.index')}}">Tienda</a>
-    <a href="{{ route('contacto')}}">Contacto</a>
+    <a href="{{ route('messages.create')}}">Contacto</a>
     <a href="{{ route('donde-estamos')}}">¿Donde estamos?</a>
 
     @auth
         @if ( Auth::user()->rol == 'admin')
             <a href="">Añadir jugador</a>
             <a href="{{ route('events.create')}}">Añadir evento</a>
-            <a href="">Mensajes</a>
+            <a href="{{ route('messages.index')}}">Mensajes</a>
         @endif
     @endauth
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageRequest;
 use App\Models\Message;
 use Illuminate\Http\Request;
+
 
 class MessageController extends Controller
 {
@@ -12,7 +14,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::orderBy('created_at', 'desc')->get();
+        return view('messages.index', compact('messages'));
     }
 
     /**
@@ -20,15 +23,21 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('messages.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MessageRequest $request)
     {
-        //
+        $message = new Message();
+        $message->name = $request->get('name');
+        $message->subject = $request->get('subject');
+        $message->text = $request->get('text');
+        $message->save();
+
+        return redirect()->route('inicio');
     }
 
     /**
@@ -36,7 +45,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('messages.show', compact('message'));
     }
 
     /**
