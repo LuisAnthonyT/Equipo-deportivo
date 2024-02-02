@@ -24,9 +24,9 @@ class SignupRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:2', 'max:255'],
-            'email' => ['required', 'string', 'min:10', 'max:255', 'unique:users'],
-            'birthday' => ['required'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'email', 'min:10', 'max:255', 'unique:users'],
+            'birthday' => ['required', 'date'],
+            'password' => ['required', 'min:8', 'confirmed', Rules\Password::defaults()],
         ];
     }
 
@@ -40,7 +40,7 @@ class SignupRequest extends FormRequest
             'name.max' => 'El nombre no puede tener más de :max caracteres.',
 
             'email.required' => 'La dirección de correo electrónico es obligatoria.',
-            'email.string' => 'La dirección de correo electrónico debe ser una cadena de caracteres.',
+            'email.email' => 'La dirección de correo electrónico debe de tener un @ y dominio.',
             'email.min' => 'La dirección de correo electrónico debe tener al menos :min caracteres.',
             'email.max' => 'La dirección de correo electrónico no puede tener más de :max caracteres.',
             'email.unique' => 'Esta dirección de correo electrónico ya está registrada.',
@@ -49,6 +49,7 @@ class SignupRequest extends FormRequest
 
             'password.required' => 'La contraseña es obligatoria.',
             'password.confirmed' => 'La confirmación de contraseña no coincide.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
         ];
     }
 }
