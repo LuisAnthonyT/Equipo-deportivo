@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -44,15 +45,19 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('account.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $user->name = $request->input('name');
+        $user->birthday = $request->input('birthday');
+        $user->save();
+
+        return redirect()->route('user.show', $user);
     }
 
     /**

@@ -17,7 +17,7 @@
     @endauth
 
     @auth
-        <a href="{{ route('')}}">Cuenta</a>
+        <a href="{{ route('user.show', Auth::user()->id)}}">Cuenta</a>
         <a href="{{ route('logout')}}">Logout</a>
     @else
         <a href="{{ route('signup')}}">Registrate</a>
