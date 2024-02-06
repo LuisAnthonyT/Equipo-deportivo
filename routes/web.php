@@ -10,9 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessageController;
-
-
-
+use App\Http\Controllers\PlayerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +41,7 @@ Route::get('/donde-estamos', function () {
 Route::resource('events', EventController::class);
 Route::resource('user', UserController::class);
 Route::resource('messages', MessageController::class);
+Route::resource('players', PlayerController::class);
 
 
 Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');

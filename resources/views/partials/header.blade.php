@@ -2,7 +2,7 @@
     <img src="{{ asset('img/logo.jpg')}}" alt="logo">
     <span>Equipo Random</span>
     <a href="{{ route('inicio')}}">Inicio</a>
-    <a href="">Jugadores</a>
+    <a href="{{ route('players.index')}}">Jugadores</a>
     <a href="{{ route('events.index')}}">Eventos</a>
     <a href="{{ route('products.index')}}">Tienda</a>
     <a href="{{ route('messages.create')}}">Contacto</a>
