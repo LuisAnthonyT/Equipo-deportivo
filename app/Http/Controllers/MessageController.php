@@ -45,6 +45,10 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+        $message = Message::findOrFail($message->id);
+        $message->readed = true;
+        $message->save();
+
         return view('messages.show', compact('message'));
     }
 
@@ -69,6 +73,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        Message::findOrFail($message->id)->delete();
+        return redirect()->route('messages.index');
     }
 }
