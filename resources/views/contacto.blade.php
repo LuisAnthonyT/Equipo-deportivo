@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Contacto')
 @section('content')
     <div class="container">
         <h2>Dejanos tu mensaje:</h2>
