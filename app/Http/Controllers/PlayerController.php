@@ -53,7 +53,10 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $player->visible = $request->input('visibility');
+        $player->save();
+
+        return redirect()->route('players.show', $player);
     }
 
     /**

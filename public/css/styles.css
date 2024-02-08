@@ -150,4 +150,13 @@ input[type="submit"]:hover {
 
 /* EVENTS */
 
+/* PLAYERS INDEX */
+.players {
+    text-align: center;
+    text-decoration: none;
+}
 
+/* PLAYER SHOW */
+.player{
+    text-align: center;
+}
