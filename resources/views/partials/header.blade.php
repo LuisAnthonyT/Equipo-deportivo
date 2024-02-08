@@ -10,7 +10,7 @@
 
     @auth
         @if ( Auth::user()->rol == 'admin')
-            <a href="">Añadir jugador</a>
+            <a href="{{ route('players.create')}}">Añadir jugador</a>
             <a href="{{ route('events.create')}}">Añadir evento</a>
             <a href="{{ route('messages.index')}}">Mensajes</a>
         @endif
