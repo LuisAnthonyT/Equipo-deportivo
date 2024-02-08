@@ -13,15 +13,14 @@
             <a href="{{ route('players.create')}}">Añadir jugador</a>
             <a href="{{ route('events.create')}}">Añadir evento</a>
             <a href="{{ route('messages.index')}}">Mensajes</a>
+            <a href="{{ route('user.index')}}">Cuentas</a>
+        @else
+            <a href="{{ route('user.show', Auth::user()->id)}}">Cuenta</a>
         @endif
-    @endauth
 
-    @auth
-        <a href="{{ route('user.show', Auth::user()->id)}}">Cuenta</a>
         <a href="{{ route('logout')}}">Logout</a>
     @else
         <a href="{{ route('signup')}}">Registrate</a>
         <a href="{{ route('login')}}">Login</a>
     @endauth
-
 </nav>

@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::orderby('created_at', 'desc')->get();
+        return view ('account.index', compact('users'));
     }
 
     /**
