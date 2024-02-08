@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Mensajes')
 @section('content')
-   @empty ($messages)
+   @if ($messages->isEmpty())
         No hay mensajes
     @else
     <h1>Mensajes no leidos</h1>
@@ -23,5 +23,5 @@
                 @endif
             </div>
         @endforeach
-    @endempty
+    @endif
 @endsection
