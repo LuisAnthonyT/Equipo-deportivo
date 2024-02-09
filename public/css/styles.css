@@ -155,8 +155,48 @@ input[type="submit"]:hover {
     text-align: center;
     text-decoration: none;
 }
+.player-img {
+    width: 300px;
+    height: 200px;
+}
 
 /* PLAYER SHOW */
 .player{
     text-align: center;
+}
+
+/* MESSAGES */
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Estilos para los mensajes */
+.read-false {
+    font-weight: bold;
+    padding: 10px;
+    background-color:#d1d5db;;
+    border-radius: 5px;
+}
+
+.readed {
+    padding: 10px;
+    background-color: #f3f4f6;
+    border-radius: 5px;
+}
+
+/* Estilos para los enlaces */
+.messages a {
+    color: #1A202C;
+    text-decoration: none;
+}
+
+.messages a:hover {
+    text-decoration: underline;
 }

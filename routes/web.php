@@ -39,6 +39,7 @@ Route::get('/donde-estamos', function () {
 })->name('donde-estamos');
 
 Route::resource('events', EventController::class);
+Route::post('event/{event}/like', [EventController::class, 'eventLike'])->name('event.like');
 Route::resource('user', UserController::class);
 Route::resource('messages', MessageController::class);
 Route::resource('players', PlayerController::class);

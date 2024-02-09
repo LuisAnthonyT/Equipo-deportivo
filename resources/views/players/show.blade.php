@@ -8,9 +8,10 @@
     <span>Posición: {{ $player->position}}</span><br>
     <span>Dorsal: {{ $player->jersey_number}}</span><br>
     @if ($player->visible == true)
-        <span>Visible</span>
+        <span>Visible</span><br>
     @else
-        <span>No visible</span>
+        <span>No visible</span><br>
     @endif
+    <img src="{{ asset($player->photo) }}" alt="{{ $player->name}}">
 </div>
 @endsection

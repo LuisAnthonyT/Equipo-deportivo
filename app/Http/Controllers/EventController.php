@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -86,5 +87,15 @@ class EventController extends Controller
     {
         Event::findOrFail($event->id)->delete();
         return redirect()->route('events.index');
+    }
+
+    //Función para dar like a un evento
+    public function EventLike(Request $request, Event $event) {
+
+        $event = Event::findorFail($event->id);
+        $userId = auth()->id();
+        $event->users->attach($userId);
+
+        return redirect()->route('events.show', $event);
     }
 }

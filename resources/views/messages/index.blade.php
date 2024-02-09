@@ -1,27 +1,24 @@
 @extends('layout')
 @section('title', 'Mensajes')
 @section('content')
+<div class="messages">
    @if ($messages->isEmpty())
         No hay mensajes
     @else
-    <h1>Mensajes no leidos</h1>
+        <h1>Mensajes</h1>
         @foreach ($messages as $message)
-            <div class="message">
-                @if ($message->readed != true)
-                <span>Nombre: {{ $message->name}}</span>
-                <span><a href="{{ route('messages.show', $message)}}">Asunto: {{ $message->subject}}</a></span>
-                @endif
-            </div>
-        @endforeach
-
-        <h1>Mensajes leidos</h1>
-        @foreach ($messages as $message)
-            <div class="message">
-                @if ($message->readed == true)
-                <span>Nombre: {{ $message->name}}</span>
-                <span><a href="{{ route('messages.show', $message)}}">Asunto: {{ $message->subject}}</a></span>
-                @endif
-            </div>
+            @if ($message->readed != true)
+                <div class="read-false">
+                    <span>Nombre: {{ $message->name}}</span><br>
+                    <a href="{{ route('messages.show', $message)}}">Asunto: {{ $message->subject}}</a>
+                </div>
+            @else
+                <div class="readed">
+                    <span>Nombre: {{ $message->name}}</span><br>
+                    <a href="{{ route('messages.show', $message)}}">Asunto: {{ $message->subject}}</a>
+                </div>
+            @endif
         @endforeach
     @endif
+</div>
 @endsection
