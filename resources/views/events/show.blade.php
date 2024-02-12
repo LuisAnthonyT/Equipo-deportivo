@@ -9,6 +9,18 @@
         <span>Hora: {{ $event->hour }}</span><br>
         <span>Tipo: {{ $event->type }}</span><br>
         <span>Tags: {{ $event->tags }}</span><br>
-        <a href="">Me gusta</a>
+
+        @if ($like)
+            <form action="{{ route('event.deleteLike', $event)}}" method="post">
+                @method('delete')
+                @csrf
+                <button type="submit">Quitar me gusta</button>
+            </form>
+        @else
+            <form action="{{ route('event.like', $event)}}" method="post">
+            @csrf
+            <button type="submit">Me gusta</button>
+            </form>
+        @endif
     </div>
 @endsection

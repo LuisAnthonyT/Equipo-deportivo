@@ -6,6 +6,7 @@ use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -14,8 +15,14 @@ class EventController extends Controller
      */
     public function index()
     {
+        $likes = [];
+        if (Auth::check()) {
+            $user = Auth::user();
+            $likes = $user->likedEvents()->pluck('id')->toArray();
+        }
+
         $events = Event::all();
-        return view ('events.index', compact('events'));
+        return view ('events.index', compact('events', 'likes'));
     }
 
     /**
@@ -51,7 +58,15 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('events.show',compact('event'));
+        $user = Auth::user();
+
+        if ($user->likedEvents()->where('id', $event->id)->exists()) {
+            $like = true;
+        } else {
+            $like = false;
+        }
+
+        return view('events.show',compact('event', 'like'));
     }
 
     /**
@@ -94,8 +109,23 @@ class EventController extends Controller
 
         $event = Event::findorFail($event->id);
         $userId = auth()->id();
-        $event->users->attach($userId);
+        $event->users()->attach($userId);
 
         return redirect()->route('events.show', $event);
+    }
+
+    //Función para quitar el like de un evento
+    public function deleteLike(Request $request, Event $event)
+    {
+        $user = auth()->user();
+
+         // Verifica si el usuario ha dado like al evento
+        if ($user->likedEvents()->where('id', $event->id)->exists()) {
+        // Elimina el like del evento para el usuario actual
+        $user->likedEvents()->detach($event->id);
+        return redirect()->back()->with('success', 'Like quitado exitosamente.');
+        }
+
+        return redirect()->back()->with('error', 'No se pudo quitar el like.');
     }
 }

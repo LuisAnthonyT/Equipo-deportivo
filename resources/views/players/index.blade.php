@@ -11,7 +11,7 @@
             @guest
                 @if ($player->visible == true)
                 <span>{{ $player->name}}</span><br>
-                <img class="player-img" src="{{ asset('img/players/cr7.jpg')}}" alt="{{ $player->name}}">
+                <img class="player-img" src="{{ $player->photo}}" alt="{{ $player->name}}">
                 @endif
             @else
                 {{-- SI SE ESTA LOGUEADO, SE MOSTRARÁN TODOS LOS JUGADORES CON ENLACE A SHOW --}}

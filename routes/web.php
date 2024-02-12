@@ -40,6 +40,9 @@ Route::get('/donde-estamos', function () {
 
 Route::resource('events', EventController::class);
 Route::post('event/{event}/like', [EventController::class, 'eventLike'])->name('event.like');
+Route::delete('event/{event}/deleteLike', [EventController::class, 'deleteLike'])->name('event.deleteLike');
+
+
 Route::resource('user', UserController::class);
 Route::resource('messages', MessageController::class);
 Route::resource('players', PlayerController::class);

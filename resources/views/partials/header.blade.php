@@ -1,6 +1,6 @@
 <nav class="header">
     <img src="{{ asset('img/logo.jpg')}}" alt="logo">
-    <span>Equipo Random</span>
+    <span>NETS</span>
     <a href="{{ route('inicio')}}">Inicio</a>
     <a href="{{ route('players.index')}}">Jugadores</a>
     <a href="{{ route('events.index')}}">Eventos</a>
