@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Middleware\CheckAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,32 +23,44 @@ use App\Http\Controllers\PlayerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//RUTA PÁGINA PRINCIPAL
 Route::get('/', function () {
     return view('index');
 })->name('inicio');
 
+// RUTAS PARA LAS POLITICAS
 Route::get('/politica-cookies', [FooterController::class, 'politicaCookies'])->name('politica-cookies');
 Route::get('/politica-privacidad', [FooterController::class, 'politicaPrivacidad'])->name('politica-privacidad');
 Route::get('/terminos-y-condiciones', [FooterController::class, 'terminosYCondiciones'])->name('terminos-y-condiciones');
 
+//RUTA PARA LA SECCIÓN TIENDA
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
-
+//RUTA PARA LA SECCIÓN DONDE ESTAMOS
 Route::get('/donde-estamos', function () {
     return view('donde-estamos');
 })->name('donde-estamos');
 
+//RUTAS PARA LA SECCIÓN EVENTOS
 Route::resource('events', EventController::class);
 Route::post('event/{event}/like', [EventController::class, 'eventLike'])->name('event.like');
 Route::delete('event/{event}/deleteLike', [EventController::class, 'deleteLike'])->name('event.deleteLike');
 
+//RUTAS PARA LA PARTE DE USUARIOS
+Route::resource('user', UserController::class)
+->except(['index']);
 
-Route::resource('user', UserController::class);
+Route::get('users', [UserController::class, 'index'])
+->name('user.index')
+->middleware(CheckAdmin::class);
+
+//RUTAS PARA LA PARTE DE MENSAJES
 Route::resource('messages', MessageController::class);
+
+//RUTAS PARA LA PARTE DE JUGADORES
 Route::resource('players', PlayerController::class);
 
-
+// RUTAS PARA REGISTRARSE, LOGIN Y LOGOUT
 Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');
 Route::post('signup', [LoginController::class, 'signup'])->name('signup');
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
