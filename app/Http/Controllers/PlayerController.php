@@ -39,10 +39,17 @@ class PlayerController extends Controller
         $player->twitch = $request->get('twitch');
         $player->position = $request->get('position');
         $player->jersey_number = $request->get('jersey_number');
+
+        //Photo
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('public/players');
+            $player->photo = str_replace('public/', '/storage/', $photoPath);
+        }
+
+
         $player->save();
 
         return redirect()->route('players.index');
-
     }
 
     /**

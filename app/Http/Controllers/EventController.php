@@ -111,7 +111,7 @@ class EventController extends Controller
         $userId = auth()->id();
         $event->users()->attach($userId);
 
-        return redirect()->route('events.show', $event);
+        return redirect()->back();
     }
 
     //Función para quitar el like de un evento
@@ -123,9 +123,9 @@ class EventController extends Controller
         if ($user->likedEvents()->where('id', $event->id)->exists()) {
         // Elimina el like del evento para el usuario actual
         $user->likedEvents()->detach($event->id);
-        return redirect()->back()->with('success', 'Like quitado exitosamente.');
+        return redirect()->back();
         }
 
-        return redirect()->back()->with('error', 'No se pudo quitar el like.');
+        return redirect()->back();
     }
 }

@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Crear jugador')
 @section('content')
-    <form action="{{ route('players.store')}}" method="post">
+    <form action="{{ route('players.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <label for="name">Nombre:</label>
@@ -21,6 +21,9 @@
 
         <label for="jersey_number">Dorsal:</label>
         <input type="number"  name="jersey_number" id="jersey_number" min="0"><br>
+
+        <label for="photo">Imagen:</label>
+        <input type="file" name="photo" id="photo"><br>
 
         <input type="submit" value="Crear jugador">
     </form>
