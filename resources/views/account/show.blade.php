@@ -2,7 +2,7 @@
 @section('title', 'Cuenta')
 @section('content')
     <div class="account">
-        <h1>Datos</h1>
+        <h1>Datos personales</h1>
         <span>Nombre: {{ $user->name}}</span><br>
         <span>Email: {{ $user->email}}</span><br>
         <span>Fecha de nacimiento: {{ $user->birthday}}</span><br>

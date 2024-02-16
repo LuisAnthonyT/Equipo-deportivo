@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2>Dejanos tu mensaje:</h2>
-        <form action="{{ route('messages.store')}}" method="post">
+        <form action="{{ route('messages.store')}}" method="post" class="contact">
             @csrf
 
             <label for="name">Nombre:</label>
@@ -20,10 +20,10 @@
     </div>
 
     @if ($errors->any())
-        <ul>
+        <div class="errors">
             @foreach ($errors->all() as $error)
-                <li>{{ $error}}</li>
+                <span>{{ $error}}</span><br>
             @endforeach
-        </ul>
+        </div>
     @endif
 @endsection

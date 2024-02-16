@@ -10,12 +10,12 @@
             {{-- SI NO SE ESTA LOGUEADO, SOLO SE MOSTRARÁN LOS JUGADORES VISIBLES Y SIN ENLACE A SHOW --}}
             @guest
                 @if ($player->visible == true)
-                <span>{{ $player->name}}</span><br>
+                <h2>{{ $player->name}}</h2><br>
                 <img class="player-img" src="{{ $player->photo}}" alt="{{ $player->name}}">
                 @endif
             @else
                 {{-- SI SE ESTA LOGUEADO, SE MOSTRARÁN TODOS LOS JUGADORES CON ENLACE A SHOW --}}
-                <span><a href="{{ route('players.show', $player)}}">{{ $player->name}}</a></span><br>
+                <h2><a href="{{ route('players.show', $player)}}">{{ $player->name}}</a></h2><br>
                 <img class="player-img" src="{{  asset($player->photo) }}" alt="{{ $player->name}}">
 
         {{-- SI EL ROL ES ADMIN, TENDRÁ LA OPCIÓN DE CAMBIAR LA VISIBILIDAD DE CADA JUGADOR --}}

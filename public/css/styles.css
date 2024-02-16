@@ -149,9 +149,21 @@ input[type="submit"]:hover {
 }
 
 /* EVENTS */
+.events{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.event a {
+    color: #1A202C;
+}
 
 /* PLAYERS INDEX */
 .players {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     text-decoration: none;
 }
@@ -175,6 +187,7 @@ input[type="submit"]:hover {
     text-align: center;
     margin: 20px auto;
     padding: 20px;
+    width: 50%;
 }
 
 /* Estilos para los mensajes */
@@ -199,4 +212,59 @@ input[type="submit"]:hover {
 
 .messages a:hover {
     text-decoration: underline;
+}
+/* TIENDA */
+.products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+.product {
+    width: 50%;
+    background-color: #f8f6f6e8;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+/* CUENTA */
+.users{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.user {
+    width: 50%;
+    background-color: #f8f6f6e8;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.account {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+/* errors */
+.errors{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8d7da;
+    font-weight: bold;
+    padding: 20px;
+    width: 50%;
 }

@@ -43,8 +43,10 @@ Route::get('/donde-estamos', function () {
 
 //RUTAS PARA LA SECCIÓN EVENTOS
 Route::resource('events', EventController::class);
-Route::post('event/{event}/like', [EventController::class, 'eventLike'])->name('event.like');
-Route::delete('event/{event}/deleteLike', [EventController::class, 'deleteLike'])->name('event.deleteLike');
+//Ruta para dar like
+Route::post('event/{event}/like', [EventController::class, 'eventLike'])->name('event.like')->middleware('auth');
+//Ruta quitar el like
+Route::delete('event/{event}/deleteLike', [EventController::class, 'deleteLike'])->name('event.deleteLike')->middleware('auth');
 
 //RUTAS PARA LA PARTE DE USUARIOS
 Route::resource('user', UserController::class)
@@ -65,7 +67,7 @@ Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm')
 Route::post('signup', [LoginController::class, 'signup'])->name('signup');
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login');
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 

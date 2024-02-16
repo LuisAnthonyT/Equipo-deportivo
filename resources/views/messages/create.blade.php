@@ -19,10 +19,10 @@
     </div>
 
     @if ($errors->any())
-        <ul>
+        <div class="errors">
             @foreach ($errors->all() as $error)
-                <li>{{ $error}}</li>
+                <span>{{ $error}}</span><br>
             @endforeach
-        </ul>
+        </div>
     @endif
 @endsection
